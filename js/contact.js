@@ -11,7 +11,7 @@ const form = document.getElementById('waContactForm');
             const message = document.getElementById('message').value;
 
             // WhatsApp Settings
-            const phoneNumber = "923061068574"; 
+            const phoneNumber = "923061608574"; 
             const text = `*New Inquiry | Rania Collection*%0A%0A` +
                          `*From:* ${name}%0A` +
                          `*Email:* ${email}%0A` +
