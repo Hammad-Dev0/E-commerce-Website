@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Rania Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@200;300;400&display=swap');
+        
+        :root { --bg: #fdfcf9; --accent: #8e8071; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--bg); color: #2d2d2d; }
+        .serif { font-family: 'Cormorant Garamond', serif; }
+
+        /* Custom Input Styling */
+        .input-group { position: relative; margin-bottom: 2.5rem; }
+        .input-field {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 14px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #d1d5db;
+            outline: none;
+            transition: 0.4s;
+        }
+        .input-field:focus { border-bottom-color: var(--accent); }
+        .input-label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #9ca3af;
+            pointer-events: none;
+            transition: 0.4s;
+        }
+        .input-field:focus ~ .input-label,
+        .input-field:valid ~ .input-label {
+            top: -15px;
+            font-size: 9px;
+            color: var(--accent);
+        }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 1s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+    <script src="js/contact.js" defer></script>
+</head>
+<body class="min-h-screen">
+
+    <nav class="p-10 flex justify-between items-center w-full absolute top-0 z-50">
+        <div class="serif text-3xl tracking-widest uppercase">RANIA</div>
+        <div class="hidden md:block w-px h-12 bg-stone-300"></div>
+        <p class="hidden md:block text-[9px] tracking-[0.4em] uppercase text-stone-400">Home & Lifestyle Curator</p>
+    </nav>
+
+    <div class="flex flex-col lg:flex-row min-h-screen">
+        
+        <div class="lg:w-1/2 relative h-[40vh] lg:h-auto overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?q=80&w=1500" 
+                 class="w-full h-full object-cover" alt="Interior">
+            <div class="absolute inset-0 bg-black/10"></div>
+            <div class="absolute bottom-12 left-12 text-white reveal active">
+                <h2 class="serif text-4xl italic mb-2">Connect with us</h2>
+                <p class="text-[10px] tracking-widest uppercase opacity-80">Personalized assistance for your home.</p>
+            </div>
+        </div>
+
+        <div class="lg:w-1/2 flex items-center justify-center p-8 lg:p-24 bg-white">
+            <div class="w-full max-w-md reveal active">
+                <header class="mb-12">
+                    <h1 class="serif text-5xl mb-4 italic">Enquiry</h1>
+                    <p class="text-sm text-stone-400 font-light leading-relaxed">Please fill out the form below. Our team will reach out to you via WhatsApp or Email within 24 hours.</p>
+                </header>
+
+                <form id="waContactForm">
+                    <div class="input-group">
+                        <input type="text" id="name" class="input-field" required>
+                        <label class="input-label">Full Name</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="email" class="input-field" required>
+                        <label class="input-label">Email Address</label>
+                    </div>
+
+                    <div class="input-group">
+                        <select id="service" class="input-field bg-transparent appearance-none cursor-pointer">
+                            <option value="Bedsheets">Bedsheets & Bedding</option>
+                            <option value="Curtains">Curtains & Drapes</option>
+                            <option value="Custom Decor">Custom Home Decor</option>
+                            <option value="Wholesale">Wholesale Inquiry</option>
+                            <option value="Wholesale">SUMMER COLLECTION  LAWN</option>
+                            <option value="Wholesale">BRAND BONANZA</option>
+                            <option value="Wholesale">Nureh Digital Lawn Ensemble</option>
+                            <option value="Wholesale">Nishat & EdenRobe 2026 Collection</option>
+                            <option value="Wholesale">Mattress Covers</option>
+                            <option value="Wholesale">3PC Texture Velvet Bedsheet</option>
+                            <option value="Wholesale">4Pc Velvet Jaquard Bedsheet</option>
+                            <option value="Wholesale">Alkaram Fabrics Men</option>
+                        </select>
+                        <label class="input-label" style="top: -15px; font-size: 9px;">Interest</label>
+                    </div>
+
+                    <div class="input-group">
+                        <textarea id="message" rows="3" class="input-field" required></textarea>
+                        <label class="input-label">Your Vision / Message</label>
+                    </div>
+
+                    <button type="submit" class="w-full mt-6 group relative border border-stone-800 p-6 overflow-hidden transition-all duration-500 hover:bg-stone-800">
+                        <span class="relative z-10 text-[10px] tracking-[0.5em] uppercase text-stone-800 group-hover:text-white transition-colors">
+                            Send via WhatsApp
+                        </span>
+                    </button>
+                </form>
+
+                <div id="success" class="hidden text-center py-10">
+                    <i class="fa-brands fa-whatsapp text-4xl text-green-600 mb-4"></i>
+                    <h3 class="serif text-2xl italic">Redirecting to WhatsApp...</h3>
+                </div>
+            </div>
+        </div>
+    </div>

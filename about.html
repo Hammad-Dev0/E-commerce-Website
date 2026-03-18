@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Rania Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        .serif { font-family: 'Playfair Display', serif; }
+        
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+    <script src="js/about.js" defer></script>
+</head>
+<body class="bg-[#faf9f6] text-slate-800">
+
+    <section class="relative h-[70vh] flex items-center justify-center overflow-hidden bg-slate-900">
+        <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=2000" 
+             alt="Luxury Home Interior" 
+             class="absolute inset-0 w-full h-full object-cover opacity-60">
+        <div class="relative z-10 text-center px-4">
+            <span class="text-white tracking-[0.3em] uppercase text-sm mb-4 block fade-in">Established 2026</span>
+            <h1 class="serif text-5xl md:text-7xl text-white mb-6 fade-in">Redefining Comfort</h1>
+            <div class="w-24 h-px bg-white mx-auto fade-in"></div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="fade-in">
+                <h2 class="serif text-4xl mb-8 leading-tight">The Art of Fine <br/><span class="italic text-slate-500">Living Spaces</span></h2>
+                <p class="text-slate-600 leading-relaxed mb-6">
+                    Rania Collection began with a single vision: to transform houses into sanctuaries. We believe that the textures you touch and the colors you see daily profoundly impact your peace of mind.
+                </p>
+                <p class="text-slate-600 leading-relaxed">
+                    From the silk-soft touch of our premium bedsheets to the graceful drape of our artisanal curtains, every piece is curated to bring a sense of timeless elegance to the modern home.
+                </p>
+            </div>
+            <div class="relative fade-in">
+                <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&q=80&w=800" 
+                     alt="Bedsheets and Curtains" 
+                     class="rounded-sm shadow-2xl">
+                <div class="absolute -bottom-8 -left-8 bg-white p-8 hidden lg:block shadow-xl">
+                    <p class="serif text-2xl italic">"Quality is not an act, <br> it is a habit."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="serif text-3xl mb-4">Our Core Philosophy</h2>
+                <p class="text-slate-500 uppercase tracking-widest text-xs">Excellence in every thread</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center p-8 border border-slate-100 hover:border-slate-300 transition-colors fade-in">
+                    <i class="fa-solid fa-feather-pointed text-2xl mb-6 text-slate-400"></i>
+                    <h3 class="serif text-xl mb-4">Premium Fabrics</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">We source only the finest long-staple cotton and sustainable materials for unparalleled softness.</p>
+                </div>
+                <div class="text-center p-8 border border-slate-100 hover:border-slate-300 transition-colors fade-in">
+                    <i class="fa-solid fa-wand-magic-sparkles text-2xl mb-6 text-slate-400"></i>
+                    <h3 class="serif text-xl mb-4">Modern Aesthetics</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Designs that balance contemporary trends with timeless classic appeal for any interior.</p>
+                </div>
+                <div class="text-center p-8 border border-slate-100 hover:border-slate-300 transition-colors fade-in">
+                    <i class="fa-solid fa-leaf text-2xl mb-6 text-slate-400"></i>
+                    <h3 class="serif text-xl mb-4">Ethical Craft</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Our production process respects both the artisan and the environment at every stage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 text-center fade-in">
+        <h2 class="serif text-3xl mb-8">Ready to transform your home?</h2>
+        <a href="index.html" class="inline-block bg-slate-900 text-white px-10 py-4 tracking-widest text-xs uppercase hover:bg-slate-700 transition-all">
+            Explore Collection
+        </a>
+    </section>

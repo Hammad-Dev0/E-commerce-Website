@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer Collection Lawn</title>
+     <style>
+/* Base marquee for the continuous sequence */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Twinkle: Combined Up/Down movement + Opacity Low/High */
+  @keyframes twinkle {
+    0%, 100% { 
+      transform: translateY(0); 
+      opacity: 1; 
+    }
+    50% { 
+      transform: translateY(-6px); 
+      opacity: 0.3; /* Low opacity */
+    }
+  }
+
+  .animate-marquee-infinite {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+
+  /* Double the speed on hover */
+  .group:hover .animate-marquee-infinite {
+    animation-duration: 12s;
+  }
+
+  /* Trigger the twinkle effect on hover */
+  .group:hover .twinkle-item {
+    animation: twinkle 0.6s ease-in-out infinite;
+  }
+
+
+/* line */
+  /* Custom Floating Animation */
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+    @keyframes urgent-line {
+        0%, 100% { 
+            background-color: #22c55e; 
+            opacity: 1;
+            transform: scaleX(1); /* Full width */
+        }
+        50% { 
+            background-color: #ef4444; 
+            opacity: 0.5;
+            transform: scaleX(0.7); /* Shrinks slightly to the center for a cooler effect */
+        }
+    }
+
+    .animate-urgent-line {
+        animation: urgent-line 1.5s infinite ease-in-out;
+        transform-origin: center; /* Animates from the middle */
+    }
+
+
+    /* -----------------------------------------------------------
+       --- CUSTOM UNIQUE IDS FOR JUNIOR GENTLEMEN SECTION ---
+    ----------------------------------------------------------- */
+
+    /* 1. ANIMATION FOR SVG DRAW EFFECT (Custom CSS required) */
+    @keyframes juniorDrawLine {
+        to { stroke-dashoffset: 0; }
+    }
+
+    /* 2. BASE ICON STYLE */
+    .junior-animated-icon {
+        stroke-dasharray: 200; /* Define the path total length */
+        stroke-dashoffset: 200; /* Start path hidden */
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: center;
+    }
+
+    /* 3. HOVER LOGIC (Changes line icons to solid filled icons) */
+    #junior-services-container .group:hover .junior-animated-icon {
+        animation: juniorDrawLine 1s ease-out forwards;
+        stroke: #fff; /* White line during solid-fill */
+        fill: #3b82f6; /* Blue 500 fill on hover */
+        stroke-dashoffset: 0; /* Instantly fill the rest of the drawing */
+    }
+
+    /* 4. PULSING STATUS DOT - Red Dot turns Green on hover */
+    .junior-status-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #ef4444; /* Default red */
+        transition: all 0.4s ease;
+    }
+
+    #junior-services-container .group:hover .junior-status-dot {
+        background-color: #10b981; /* Turns green on hover */
+        box-shadow: 0 0 10px #10b981, 0 0 20px #10b981; /* Glowing green pulse */
+    }
+
+    /* Standard pulsing for red dot */
+    @keyframes juniorRedPulse {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+    .junior-status-dot-pulse {
+        animation: juniorRedPulse 2s infinite;
+    }
+    #junior-services-container .group:hover .junior-status-dot-pulse {
+        animation: none; /* Stop pulsing once hover (turns green) starts */
+    }
+
+    /* Custom Link Underline Animation */
+    .hania-footer-link {
+        position: relative;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .hania-footer-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -2px;
+        left: 0;
+        background-color: #ffffff;
+        transition: width 0.3s ease;
+    }
+    .hania-footer-link:hover::after {
+        width: 100%;
+    }
+
+    /* Smooth Back to Top Fade */
+    #hania-back-to-top {
+        transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    }
+    #hania-back-to-top.hidden-btn {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+    }
+    </style>
+    <!-- cdn tailwind css -->
+         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+         <!-- font awesome link file -->
+          <script src="https://kit.fontawesome.com/3b06df60d3.js" crossorigin="anonymous"></script>
+          <!-- js link file -->
+           <script src="js/summerlawn.js" defer></script>
+</head>
+<body>
+    <!-- header of the page -->
+    <header>
+
+         <!-- topbar -->
+         <div class="group w-full bg-black text-white overflow-hidden cursor-pointer transition-all duration-500 ease-in-out">
+  
+             <div class="py-4 transition-all duration-500 ease-in-out group-hover:py-6">
+                 
+                 <div class="animate-marquee-infinite">
+                     <p class="text-sm sm:text-base md:text-lg font-bold tracking-widest uppercase flex items-center">
+                         
+                         <span class="px-10 twinkle-item">
+                             🚚 Free Delivery All Over Pakistan | Shop Now at Rania Collection🔥
+                            </span>
+                            <span class="px-10 twinkle-item">
+                                🚚 Free Delivery All Over Pakistan | Shop Now at Rania Collection🔥
+                            </span>
+                            <span class="px-10 twinkle-item">
+                                🚚 Free Delivery All Over Pakistan | Shop Now at Rania Collection🔥
+                            </span>
+                            <span class="px-10 twinkle-item">
+                                🚚 Free Delivery All Over Pakistan | Shop Now at Rania Collection🔥
+                            </span>
+                            
+      </p>
+    </div>
+    
+</div>
+</div>
+
+<!-- navbar -->
+<nav id="navbar" class="sticky top-0 w-full bg-white border-b border-gray-100 px-4 md:px-8 py-5 z-[100]">
+    
+    <div class="max-w-7xl mx-auto relative flex items-center justify-between lg:grid lg:grid-cols-3">
+        
+        <!-- LEFT -->
+        <div class="flex items-center">
+      <button id="openMenu" class="lg:hidden text-gray-800 p-1 hover:scale-110 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h7"/>
+            </svg>
+        </button>
+        
+        <div class="hidden lg:flex items-center space-x-6 text-[11px] font-bold text-gray-400 uppercase tracking-[0.2em]">
+            <a href="https://wa.me/923061608574" class="hover:text-black">+923061608574</a>
+            <a href="mailto:raniacollectioninfo@gmail.com" class="hover:text-black">EMAIL US</a>
+        </div>
+    </div>
+    
+    <!-- LOGO -->
+    <div class="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 lg:flex lg:justify-center">
+        <a href="index.html" class="text-sm md:text-xl font-bold tracking-[0.3em] uppercase">
+            Rania Collection
+      </a>
+    </div>
+    
+    <!-- RIGHT -->
+    <div class="flex items-center justify-end space-x-4 md:space-x-6">
+        
+        <!-- SEARCH -->
+        <!-- SEARCH BUTTON -->
+        <button id="searchBtn" class="hover:scale-110 transition">
+            <i class="fa-solid fa-magnifying-glass text-gray-800"></i>
+</button>
+
+<!-- SEARCH BAR -->
+<div id="searchBar" class="hidden absolute top-full left-0 w-full bg-white p-4 border-b shadow-md z-40">
+    <div class="max-w-7xl mx-auto flex items-center">
+        <input type="text" placeholder="Search for products..." class="w-full text-lg outline-none">
+        <button id="closeSearch" class="ml-4 text-2xl text-gray-400 hover:text-black">&times;</button>
+    </div>
+</div>
+
+<!-- CART -->
+<button id="cartBtn" class="relative hover:scale-110 transition">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span class="absolute -top-1 -right-2 bg-black text-white text-[8px] px-1.5 py-0.5 rounded-full">0</span>
+</button>
+
+</div>
+</div>
+
+
+</nav>
+
+
+<!-- OVERLAY -->
+<div id="cartOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[120] opacity-0 invisible transition-all duration-300"></div>
+
+
+<!-- CART DRAWER -->
+<div id="cartDrawer"
+class="fixed top-0 right-0 h-full w-full md:w-[30%] bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-[130] flex flex-col">
+
+<!-- HEADER -->
+<div class="flex justify-between items-center p-5 border-b">
+    <h2 class="font-bold text-xl uppercase tracking-widest">Shopping Cart</h2>
+    <button class="closeCart text-3xl font-light hover:rotate-90 transition">&times;</button>
+</div>
+
+<!-- CONTENT -->
+<div class="flex-1 flex flex-col items-center justify-center p-8 text-center relative">
+    
+    <!-- SECOND CLOSE -->
+    <button class="closeCart absolute top-4 right-4 text-gray-600 hover:text-black text-2xl">
+        &times;
+    </button>
+
+    <div class="text-6xl mb-4 text-gray-200">🛒</div>
+    <h3 class="text-lg font-medium text-gray-900">Your cart is empty</h3>
+    <p class="text-gray-500 mt-2 text-sm">Looks like you haven't added anything yet.</p>
+
+    <button id="continueShopping"
+    class="mt-8 w-full bg-black text-white py-3 font-bold uppercase tracking-widest hover:bg-gray-800 transition">
+    Continue Shopping
+</button>
+
+<a href="https://wa.me/923061608574"
+class="mt-4 w-full block bg-green-700 text-white py-3 font-bold uppercase tracking-widest hover:bg-green-800 transition text-center">
+Order on WhatsApp
+</a>
+</div>
+
+<!-- FOOTER of the cart -->
+<div class="p-5 border-t bg-gray-50">
+    <div class="flex justify-between font-bold text-lg mb-4">
+        <span>Subtotal</span>
+        <span>Rs. 0</span>
+    </div>
+    <button class="w-full bg-gray-300 text-gray-600 py-3 font-bold uppercase cursor-not-allowed">
+        Checkout
+    </button>
+</div>
+
+</div>
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="fixed top-0 left-0 w-72 h-screen bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-[110] lg:hidden overflow-y-auto">
+    <div class="flex justify-between items-center p-5 border-b">
+        <h2 class="font-bold text-lg">Menu</h2>
+        <button id="closeMenu" class="text-2xl">&times;</button>
+    </div>
+    <ul class="flex flex-col space-y-6 p-6 font-medium text-gray-700">
+        <li><a href="index.html" class="hover:text-black">Home</a></li>
+        <li><a href="summercollectionlawn.html" class="hover:text-black">SUMMER COLLECTION  LAWN</a></li>
+        <li><a href="bonanza.html" class="hover:text-black">BRAND BONANZA</a></li>
+        <li><a href="noreh.html" class="hover:text-black">Nureh Digital Lawn Ensemble</a></li>
+        <li><a href="nishat.html" class="hover:text-black">Nishat & EdenRobe 2026 Collection</a></li>
+        <li><a href="meterscover.html" class="hover:text-black">Mattress Covers</a></li>
+        <li><a href="3pcvelvet.html" class="hover:text-black">3PC Texture Velvet Bedsheet</a></li>
+        <li><a href="4pcvelvet.html" class="hover:text-black">4Pc Velvet Jaquard Bedsheet</a></li>
+    <li><a href="blackberry.html" class="hover:text-black">BLACKBERRY JACKARD CURTAINS</a></li>
+    <li><a href="alkaram.html" class="hover:text-black">Alkaram Fabrics Men</a></li>
+    <li><a href="about.html" class="hover:text-black">About</a></li>
+    <li><a href="contact.html" class="hover:text-black">Contact</a></li>
+</ul>
+</div>
+
+
+</header>
+<!-- main content of the page -->
+<main>
+    
+    <!-- image carasoul -->
+     <section class="relative w-full h-[400px] md:h-[600px] overflow-hidden bg-gray-50">
+
+  <!-- Carousel Track -->
+  <div id="carouselTrack" class="flex w-full h-full transition-transform duration-1000 ease-in-out">
+
+    <!-- SLIDE 1: BEDSHEET SALE -->
+    <div class="min-w-full h-full relative">
+      <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=2000"
+           alt="Luxury Bedsheet Collection"
+           class="absolute inset-0 w-full h-full object-cover object-right">
+
+      <div class="absolute inset-y-0 left-0 w-full md:w-[70%] max-w-2xl bg-gradient-to-r from-white/90 via-white/40 to-transparent flex flex-col justify-center px-6 md:px-20 z-10">
+        <h2 class="text-2xl md:text-4xl font-serif italic text-blue-900">Luxury</h2>
+        <h1 class="text-6xl md:text-8xl font-extrabold text-blue-900 tracking-tight leading-tight">BEDSHEETS</h1>
+        <p class="text-2xl md:text-4xl font-bold text-red-800 uppercase tracking-wide">UPTO 50% OFF</p>
+        <p class="mt-4 text-xs md:text-sm uppercase tracking-widest text-gray-600">Premium Cotton & Velvet Collection</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: LADIES COLLECTION -->
+    <div class="min-w-full h-full relative">
+      <img src="images/7489ff4e-0f93-46cd-90b2-92cfe6f560a3.jfif"
+           alt="Elegant Ladies Fashion Collection"
+           class="absolute inset-0 w-full h-full object-cover object-center">
+
+      <div class="absolute inset-y-0 left-0 w-full md:w-[70%] max-w-2xl bg-gradient-to-r from-white/90 via-white/40 to-transparent flex flex-col justify-center px-6 md:px-20 z-10">
+        <h2 class="text-2xl md:text-4xl font-serif italic text-gray-800">Elegant</h2>
+        <h1 class="text-6xl md:text-8xl font-extrabold text-gray-900 tracking-tight leading-tight">FASHION</h1>
+        <p class="text-2xl md:text-4xl font-bold text-pink-700 uppercase tracking-wide">LADIES COLLECTION</p>
+        <p class="mt-4 text-xs md:text-sm uppercase tracking-widest text-gray-600">Trendy Suits • Premium Fabrics</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: TRUST -->
+    <div class="min-w-full h-full relative">
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2000&q=80"
+           alt="Trusted Fashion Brand"
+           class="absolute inset-0 w-full h-full object-cover object-center">
+
+      <div class="absolute inset-y-0 left-0 w-full md:w-[70%] max-w-2xl bg-gradient-to-r from-white/90 via-white/40 to-transparent flex flex-col justify-center px-6 md:px-20 z-10">
+        <h2 class="text-2xl md:text-4xl font-serif italic text-gray-800">Loved By</h2>
+        <h1 class="text-6xl md:text-8xl font-extrabold text-gray-900 tracking-tight leading-tight">30,000+</h1>
+        <p class="text-2xl md:text-4xl font-bold text-emerald-800 uppercase tracking-wide">HAPPY CUSTOMERS</p>
+        <p class="mt-4 text-xs md:text-sm uppercase tracking-widest text-gray-600">Trusted Fashion & Home Brand Across Pakistan</p>
+      </div>
+
+      <!-- Influencers -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-20">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300" alt="Influencer 1"
+             class="w-12 h-12 md:w-20 md:h-20 rounded-full object-cover border-4 border-white shadow-lg hover:scale-110 transition-transform duration-300">
+        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=300" alt="Influencer 2"
+             class="w-12 h-12 md:w-20 md:h-20 rounded-full object-cover border-4 border-white shadow-lg hover:scale-110 transition-transform duration-300">
+        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300" alt="Influencer 3"
+             class="w-12 h-12 md:w-20 md:h-20 rounded-full object-cover border-4 border-white shadow-lg hover:scale-110 transition-transform duration-300">
+        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=300" alt="Influencer 4"
+             class="w-12 h-12 md:w-20 md:h-20 rounded-full object-cover border-4 border-white shadow-lg hover:scale-110 transition-transform duration-300">
+      </div>
+    </div>
+  </div>
+
+  <!-- DOTS -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+    <div class="dot w-3 h-3 rounded-full bg-black/20 border border-white cursor-pointer"></div>
+    <div class="dot w-3 h-3 rounded-full bg-black/20 border border-white cursor-pointer"></div>
+    <div class="dot w-3 h-3 rounded-full bg-black/20 border border-white cursor-pointer"></div>
+  </div>
+
+</section>
+
+
+
+<!-- watsapp button -->
+<a href="https://wa.me/923061608574" 
+   target="_blank" 
+   class="fixed bottom-8 right-8 z-[100] flex items-center justify-center w-16 h-16 bg-[#25D366] rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 group animate-float">
+    
+    <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-40"></span>
+    
+    <svg class="w-10 h-10 text-white relative z-10" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+
+    <span class="absolute right-20 bg-gray-900 text-white text-[10px] px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl font-bold tracking-tight">
+        ORDER ON WHATSAPP
+    </span>
+</a>
+<!-- back top button -->
+ <button id="backToTop" class="fixed bottom-8 left-8 z-[90] p-3 rounded-full bg-white border border-gray-200 shadow-lg text-gray-800 opacity-0 invisible transition-all duration-300 hover:bg-black hover:text-white hover:-translate-y-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+</button>
+
+
+<!-- lawn -->
+ <!-- Lawn is here -->
+<section class="bg-gray-50 pb-">
+   
+    <div class="flex items-center justify-center mb-8">
+        <div class="border-t-2 border-gray-300 w-10 md:w-32 mr-4"></div>
+        <h1 class="font-bold text-xl md:text-3xl text-center text-gray-800 uppercase tracking-widest p-12">
+           Summer LAWN IS HERE
+        </h1>
+        <div class="border-t-2 border-gray-300 w-10 md:w-32 ml-4"></div>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-8 justify-center p-4">
+        <div class="lawn-card group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 w-72 overflow-hidden border border-gray-100">
+            <div class="relative overflow-hidden aspect-[4/5]">
+                <div class="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-wider">ON SALE</div>
+                <img src="images/s2.jfif" alt="Product 1" class="lawn-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-lg text-xs font-bold uppercase text-gray-800">Quick View</div>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="lawn-name font-bold text-gray-800 text-sm mb-1">Lawn Fabric</h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-400 line-through text-xs font-medium">Rs.3,998.00</span>
+                    <span class="lawn-price text-red-600 font-bold text-sm">Rs.2,399.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lawn-card group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 w-72 overflow-hidden border border-gray-100">
+            <div class="relative overflow-hidden aspect-[4/5]">
+                <div class="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-wider">ON SALE</div>
+                <img src="images/s3.jfif" alt="Product 2" class="lawn-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-lg text-xs font-bold uppercase text-gray-800">Quick View</div>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="lawn-name font-bold text-gray-800 text-sm mb-1">Lawn Fabric</h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-400 line-through text-xs font-medium">Rs.3,998.00</span>
+                    <span class="lawn-price text-red-600 font-bold text-sm">Rs.2,399.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lawn-card group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 w-72 overflow-hidden border border-gray-100">
+            <div class="relative overflow-hidden aspect-[4/5]">
+                <div class="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-wider">ON SALE</div>
+                <img src="images/s4.jfif" alt="Product 3" class="lawn-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-lg text-xs font-bold uppercase text-gray-800">Quick View</div>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="lawn-name font-bold text-gray-800 text-sm mb-1">Lawn Fabric</h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-400 line-through text-xs font-medium">Rs.3,998.00</span>
+                    <span class="lawn-price text-red-600 font-bold text-sm">Rs.2,399.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lawn-card group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 w-72 overflow-hidden border border-gray-100">
+            <div class="relative overflow-hidden aspect-[4/5]">
+                <div class="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-wider">ON SALE</div>
+                <img src="images/s5.jfif" alt="Product 4" class="lawn-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-lg text-xs font-bold uppercase text-gray-800">Quick View</div>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="lawn-name font-bold text-gray-800 text-sm mb-1">Lawn Fabric</h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-400 line-through text-xs font-medium">Rs.3,998.00</span>
+                    <span class="lawn-price text-red-600 font-bold text-sm">Rs.2,399.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lawn-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-xl max-w-4xl w-full flex flex-col md:flex-row shadow-2xl relative max-h-[90vh] overflow-y-auto md:overflow-visible">
+            
+            <button id="lawn-close" class="absolute top-4 right-4 z-20 bg-white/80 hover:bg-white p-2 rounded-full shadow-md text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="md:w-1/2 bg-gray-100 h-64 md:h-auto flex-shrink-0">
+                <img id="lawn-modal-img" src="" class="w-full h-full object-cover">
+            </div>
+
+            <div class="p-6 md:p-8 md:w-1/2 flex flex-col justify-center">
+                <h2 id="lawn-modal-title" class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Title</h2>
+                <div class="flex items-center gap-3 mb-4">
+                    <span id="lawn-modal-price" class="text-red-600 text-lg md:text-xl font-bold">Price</span>
+                    <span class="text-gray-400 line-through text-sm">Rs.3,998.00</span>
+                </div>
+                
+                <div class="text-gray-600 text-sm space-y-4 border-t pt-4">
+                    <p>Experience luxurious comfort with this vibrant 2-piece set. Features a detailed botanical branch pattern.</p>
+                    <ul class="grid grid-cols-1 gap-2 text-[13px]">
+                        <li>✔ Stuff: Allover Lawn 2PC</li>
+                        <li>✔ 40+ Beautiful Designs Available</li>
+                        <li>✔ 5.25 meter cutting</li>
+                        <li>✔ 100% Color Guaranteed</li>
+                    </ul>
+                </div>
+
+                <a id="lawn-whatsapp-btn" href="#" target="_blank" class="mt-6 block text-center bg-green-600 text-white py-3 rounded hover:bg-green-700 transition-all font-semibold uppercase tracking-widest text-xs">
+                    Buy Now via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- section 2 -->
+<section class="bg-gray-50 pt-12">
+   
+    <div class="flex items-center justify-center mb-8">
+        
+    </div>
+
+    <div class="flex flex-wrap items-center gap-8 justify-center p-4">
+        <div class="lawn-card group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 w-72 overflow-hidden border border-gray-100">
+            <div class="relative overflow-hidden aspect-[4/5]">
+                <div class="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-wider">ON SALE</div>
+                <img src="images/s6.jfif" alt="Product 1" class="lawn-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-lg text-xs font-bold uppercase text-gray-800">Quick View</div>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="lawn-name font-bold text-gray-800 text-sm mb-1">Lawn Fabric</h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-400 line-through text-xs font-medium">Rs.3,998.00</span>
+                    <span class="lawn-price text-red-600 font-bold text-sm">Rs.2,399.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lawn-card group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 w-72 overflow-hidden border border-gray-100">
+            <div class="relative overflow-hidden aspect-[4/5]">
+                <div class="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-wider">ON SALE</div>
+                <img src="images/s7.jfif" alt="Product 2" class="lawn-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-lg text-xs font-bold uppercase text-gray-800">Quick View</div>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="lawn-name font-bold text-gray-800 text-sm mb-1">Lawn Fabric</h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-400 line-through text-xs font-medium">Rs.3,998.00</span>
+                    <span class="lawn-price text-red-600 font-bold text-sm">Rs.2,399.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lawn-card group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 w-72 overflow-hidden border border-gray-100">
+            <div class="relative overflow-hidden aspect-[4/5]">
+                <div class="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-wider">ON SALE</div>
+                <img src="images/s8.jfif" alt="Product 3" class="lawn-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-lg text-xs font-bold uppercase text-gray-800">Quick View</div>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="lawn-name font-bold text-gray-800 text-sm mb-1">Lawn Fabric</h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-400 line-through text-xs font-medium">Rs.3,998.00</span>
+                    <span class="lawn-price text-red-600 font-bold text-sm">Rs.2,399.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lawn-card group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 w-72 overflow-hidden border border-gray-100">
+            <div class="relative overflow-hidden aspect-[4/5]">
+                <div class="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-wider">ON SALE</div>
+                <img src="images/s9.jfif" alt="Product 4" class="lawn-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-lg text-xs font-bold uppercase text-gray-800">Quick View</div>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="lawn-name font-bold text-gray-800 text-sm mb-1">Lawn Fabric</h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-400 line-through text-xs font-medium">Rs.3,998.00</span>
+                    <span class="lawn-price text-red-600 font-bold text-sm">Rs.2,399.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lawn-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-xl max-w-4xl w-full flex flex-col md:flex-row shadow-2xl relative max-h-[90vh] overflow-y-auto md:overflow-visible">
+            
+            <button id="lawn-close" class="absolute top-4 right-4 z-20 bg-white/80 hover:bg-white p-2 rounded-full shadow-md text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="md:w-1/2 bg-gray-100 h-64 md:h-auto flex-shrink-0">
+                <img id="lawn-modal-img" src="" class="w-full h-full object-cover">
+            </div>
+
+            <div class="p-6 md:p-8 md:w-1/2 flex flex-col justify-center">
+                <h2 id="lawn-modal-title" class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Title</h2>
+                <div class="flex items-center gap-3 mb-4">
+                    <span id="lawn-modal-price" class="text-red-600 text-lg md:text-xl font-bold">Price</span>
+                    <span class="text-gray-400 line-through text-sm">Rs.3,998.00</span>
+                </div>
+                
+                <div class="text-gray-600 text-sm space-y-4 border-t pt-4">
+                    <p>Experience luxurious comfort with this vibrant 2-piece set. Features a detailed botanical branch pattern.</p>
+                    <ul class="grid grid-cols-1 gap-2 text-[13px]">
+                        <li>✔ Stuff: Allover Lawn 2PC</li>
+                        <li>✔ 40+ Beautiful Designs Available</li>
+                        <li>✔ 5.25 meter cutting</li>
+                        <li>✔ 100% Color Guaranteed</li>
+                    </ul>
+                </div>
+
+                <a id="lawn-whatsapp-btn" href="#" target="_blank" class="mt-6 block text-center bg-green-600 text-white py-3 rounded hover:bg-green-700 transition-all font-semibold uppercase tracking-widest text-xs">
+                    Buy Now via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- section 3 -->
+    <section class="bg-gray-50 mt-12">
+   
+    <div class="flex items-center justify-center mb-8">
+        
+    </div>
+
+    <div class="flex flex-wrap items-center gap-8 justify-center p-4">
+        <div class="lawn-card group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 w-72 overflow-hidden border border-gray-100">
+            <div class="relative overflow-hidden aspect-[4/5]">
+                <div class="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-wider">ON SALE</div>
+                <img src="images/s10.jfif" alt="Product 1" class="lawn-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-lg text-xs font-bold uppercase text-gray-800">Quick View</div>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="lawn-name font-bold text-gray-800 text-sm mb-1">Lawn Fabric</h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-400 line-through text-xs font-medium">Rs.3,998.00</span>
+                    <span class="lawn-price text-red-600 font-bold text-sm">Rs.2,399.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lawn-card group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 w-72 overflow-hidden border border-gray-100">
+            <div class="relative overflow-hidden aspect-[4/5]">
+                <div class="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-wider">ON SALE</div>
+                <img src="images/s11.jfif" alt="Product 2" class="lawn-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-lg text-xs font-bold uppercase text-gray-800">Quick View</div>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="lawn-name font-bold text-gray-800 text-sm mb-1">Lawn Fabric</h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-400 line-through text-xs font-medium">Rs.3,998.00</span>
+                    <span class="lawn-price text-red-600 font-bold text-sm">Rs.2,399.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lawn-card group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 w-72 overflow-hidden border border-gray-100">
+            <div class="relative overflow-hidden aspect-[4/5]">
+                <div class="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-wider">ON SALE</div>
+                <img src="images/s12.jfif" alt="Product 3" class="lawn-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-lg text-xs font-bold uppercase text-gray-800">Quick View</div>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="lawn-name font-bold text-gray-800 text-sm mb-1">Lawn Fabric</h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-400 line-through text-xs font-medium">Rs.3,998.00</span>
+                    <span class="lawn-price text-red-600 font-bold text-sm">Rs.2,399.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lawn-card group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 w-72 overflow-hidden border border-gray-100">
+            <div class="relative overflow-hidden aspect-[4/5]">
+                <div class="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-wider">ON SALE</div>
+                <img src="images/s13.jfif" alt="Product 4" class="lawn-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-lg text-xs font-bold uppercase text-gray-800">Quick View</div>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="lawn-name font-bold text-gray-800 text-sm mb-1">Lawn Fabric</h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-400 line-through text-xs font-medium">Rs.3,998.00</span>
+                    <span class="lawn-price text-red-600 font-bold text-sm">Rs.2,399.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lawn-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-xl max-w-4xl w-full flex flex-col md:flex-row shadow-2xl relative max-h-[90vh] overflow-y-auto md:overflow-visible">
+            
+            <button id="lawn-close" class="absolute top-4 right-4 z-20 bg-white/80 hover:bg-white p-2 rounded-full shadow-md text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="md:w-1/2 bg-gray-100 h-64 md:h-auto flex-shrink-0">
+                <img id="lawn-modal-img" src="" class="w-full h-full object-cover">
+            </div>
+
+            <div class="p-6 md:p-8 md:w-1/2 flex flex-col justify-center">
+                <h2 id="lawn-modal-title" class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Title</h2>
+                <div class="flex items-center gap-3 mb-4">
+                    <span id="lawn-modal-price" class="text-red-600 text-lg md:text-xl font-bold">Price</span>
+                    <span class="text-gray-400 line-through text-sm">Rs.3,998.00</span>
+                </div>
+                
+                <div class="text-gray-600 text-sm space-y-4 border-t pt-4">
+                    <p>Experience luxurious comfort with this vibrant 2-piece set. Features a detailed botanical branch pattern.</p>
+                    <ul class="grid grid-cols-1 gap-2 text-[13px]">
+                        <li>✔ Stuff: Allover Lawn 2PC</li>
+                        <li>✔ 40+ Beautiful Designs Available</li>
+                        <li>✔ 5.25 meter cutting</li>
+                        <li>✔ 100% Color Guaranteed</li>
+                    </ul>
+                </div>
+
+                <a id="lawn-whatsapp-btn" href="#" target="_blank" class="mt-6 block text-center bg-green-600 text-white py-3 rounded hover:bg-green-700 transition-all font-semibold uppercase tracking-widest text-xs">
+                    Buy Now via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- for further -->
+ <div class="mb-6 flex flex-col items-center bg-gray-50 pt-12">
+    <a id="dynamicLineLink" href="https://wa.me/923061608574" target="_blank" class="w-full group">
+        
+        <div class="flex items-center justify-center gap-2 text-[10px] md:text-[16px] font-medium uppercase tracking-tight mb-2 text-gray-700 text-center">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            
+            <span>For further design contact on <span class="font-black text-green-600">WhatsApp</span></span>
+        </div>
+        
+        <div class="h-[2px] w-full rounded-full animate-urgent-line shadow-sm"></div>
+    </a>
+</div>
+</section>
+
+
+<!-- Customer satisfied -->
+ <div id="junior-services-container" class="bg-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+            <div id="junior-service-support" class="group flex items-start gap-6 cursor-pointer transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-6 rounded-xl hover:bg-gray-50/50">
+                
+                <div class="relative flex-shrink-0 flex items-center justify-center">
+                    <svg class="w-16 h-16 transition-all duration-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" stroke="#000" stroke-width="2"/>
+                        <path class="junior-animated-icon" d="M50 50 L84.64 50 M15.36 50 M50 84.64 M50 15.36 L50 84.64 M50 15.36 M50 84.64 M25.36 25.36 L74.64 74.64 M74.64 25.36 L25.36 74.64 M31.25 31.25 L68.75 68.75 M68.75 31.25 L31.25 68.75" 
+                              stroke="#3b82f6" stroke-width="4" stroke-linecap="round" fill="none"/>
+                    </svg>
+                </div>
+
+                <div class="flex-grow">
+                    <h3 class="font-extrabold text-sm uppercase tracking-widest text-gray-950 mb-1 transition-colors group-hover:text-blue-600">
+                        Support 24/7
+                    </h3>
+                    <p class="text-[13px] leading-relaxed text-gray-700 font-medium">
+                        Contact us 24 hours a day,<br>7 days a week
+                    </p>
+                </div>
+            </div>
+
+            <div id="junior-service-return" class="group flex items-start gap-6 cursor-pointer transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-6 rounded-xl hover:bg-gray-50/50">
+                
+                <div class="relative flex-shrink-0 flex items-center justify-center">
+                    <svg class="w-16 h-16 transition-all duration-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" stroke="#000" stroke-width="2"/>
+                        <path class="junior-animated-icon" d="M72 38.6A25 25 0 1 0 53 73 M53 17V39H75" 
+                              stroke="#3b82f6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                    <div class="absolute top-[-8px] right-[-8px] junior-status-dot junior-status-dot-pulse"></div>
+                </div>
+
+                <div class="flex-grow">
+                    <h3 class="font-extrabold text-sm uppercase tracking-widest text-gray-950 mb-1 transition-colors group-hover:text-blue-600">
+                        14 Days Return
+                    </h3>
+                    <p class="text-[13px] leading-relaxed text-gray-700 font-medium">
+                        Simply return it within 14<br>days for an exchange.
+                    </p>
+                </div>
+            </div>
+
+            <div id="junior-service-secure" class="group flex items-start gap-6 cursor-pointer transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-6 rounded-xl hover:bg-gray-50/50">
+                
+                <div class="relative flex-shrink-0 flex items-center justify-center">
+                    <svg class="w-16 h-16 transition-all duration-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" stroke="#000" stroke-width="2"/>
+                        <path class="junior-animated-icon" d="M50 16L78 28V52A28 28 0 0 1 50 80A28 28 0 0 1 22 52V28L50 16Z" 
+                              stroke="#3b82f6" stroke-width="4" stroke-linecap="round" fill="none"/>
+                    </svg>
+                </div>
+
+                <div class="flex-grow">
+                    <h3 class="font-extrabold text-sm uppercase tracking-widest text-gray-950 mb-1 transition-colors group-hover:text-blue-600">
+                        100% Payment Secure
+                    </h3>
+                    <p class="text-[13px] leading-relaxed text-gray-700 font-medium">
+                        We ensure secure payment<br>with PEV
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</main>
+<!-- footer of the page -->
+<footer id="hania-main-footer" class="bg-[#1a1a1a] text-[#b3b3b3] pt-16 pb-8 px-6 md:px-12 font-sans">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        
+        <div class="space-y-6">
+            <h4 class="text-white font-bold text-lg uppercase tracking-wider mb-8">Get in touch</h4>
+            <div class="flex items-start gap-4 group">
+                <i class="fa-solid fa-location-dot mt-1 text-white group-hover:scale-110 transition-transform"></i>
+                <p class="text-sm leading-relaxed">Shop#39 Sitara<br>market Faisalabad<br><span class="text-white">Punjab Pakistan</span></p>
+            </div>
+            <div class="flex items-center gap-4 group">
+                <i class="fa-solid fa-envelope text-white group-hover:scale-110 transition-transform"></i>
+                <a href="mailto:raniacollectioninfo@gmail.com" class="hania-footer-link text-sm">raniacollectioninfo@gmail.com</a>
+            </div>
+            <div class="flex items-center gap-4 group">
+                <i class="fa-solid fa-phone text-white group-hover:scale-110 transition-transform"></i>
+                <a href="tel:+923061608574" class="hania-footer-link text-sm">+92 3061608574</a>
+            </div>
+            <div class="flex gap-5 pt-4">
+                <a href="https://www.facebook.com/share/1AsUZSgJdm/" class="hover:text-blue-500 transition-all duration-300 hover:-translate-y-1" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="index.html" class="hover:text-sky-400 transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://instagram.com/rania.collection0" class="hover:text-pink-500 transition-all duration-300 hover:-translate-y-1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="index.html" class="hover:text-blue-700 transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="index.html" class="hover:text-red-600 transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-pinterest-p"></i></a>
+            </div>
+        </div>
+
+        
+
+        <div>
+            <h4 class="text-white font-bold text-lg uppercase tracking-wider mb-8">Catagories</h4>
+            <ul class="space-y-3 text-xs font-bold uppercase tracking-widest">
+    <li><a href="index.html" class="hania-footer-link">Home</a></li>
+    <li><a href="summercollectionlawn.html" class="hania-footer-link">SUMMER COLLECTION  LAWN</a></li>
+    <li><a href="bonanza.html" class="hania-footer-link">BRAND BONANZA</a></li>
+    <li><a href="noreh.html" class="hania-footer-link">Nureh Digital Lawn Ensemble</a></li>
+    <li><a href="nishat.html" class="hania-footer-link">Nishat & EdenRobe 2026 Collection</a></li>
+    <li><a href="meterscover.html" class="hania-footer-link">Mattress Covers</a></li>
+    <li><a href="3pcvelvet.html" class="hania-footer-link">3PC Texture Velvet Bedsheet</a></li>
+    <li><a href="4pcvelvet.html" class="hania-footer-link">4Pc Velvet Jaquard Bedsheet</a></li>
+    <li><a href="blackberry.html" class="hania-footer-link">BLACKBERRY JACKARD CURTAINS</a></li>
+    <li><a href="alkaram.html" class="hania-footer-link">Alkaram Fabrics Men</a></li>
+    <li><a href="about.html" class="hania-footer-link">About</a></li>
+    <li><a href="contact.html" class="hania-footer-link">Contact</a></li>
+               
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-white font-bold text-lg uppercase tracking-wider mb-8">Newsletter Signup</h4>
+            <p class="text-sm mb-6 leading-relaxed">Subscribe to our newsletter and get <span class="text-white font-bold">10% off</span> your first purchase</p>
+            
+            <form id="hania-newsletter-form" class="relative">
+                <div class="flex items-center border border-gray-600 rounded-full overflow-hidden focus-within:border-white transition-colors">
+                    <input 
+                        type="email" 
+                        id="hania-email-input" 
+                        placeholder="Your email address" 
+                        class="bg-transparent w-full px-5 py-3 text-sm text-white focus:outline-none placeholder:text-gray-500"
+                        required
+                    >
+                    <button 
+                        type="submit" 
+                        id="hania-subscribe-btn" 
+                        class="bg-transparent text-white px-6 py-3 text-sm font-bold uppercase border-l border-gray-600 hover:bg-white hover:text-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        Subscribe
+                    </button>
+                </div>
+                <p id="hania-form-message" class="text-[11px] mt-2 ml-4 hidden"></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 text-center">
+        <p class="text-xs uppercase tracking-[3px] opacity-60 hover:opacity-100 transition-opacity">© <span id="footer-year"></span> Hania Textile Faisalabad. All Rights Reserved.</p>
+    </div>
+
+    <button id="hania-back-to-top" class="fixed bottom-8 right-8 bg-white text-black w-10 h-10 flex items-center justify-center shadow-2xl z-50 hover:bg-gray-200 transition-colors hidden-btn">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+</footer>
+</body>
+</html>
